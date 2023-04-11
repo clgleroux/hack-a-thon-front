@@ -11,7 +11,7 @@ export class TestComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const { Configuration, OpenAIApi } = require('openai');
     const configuration = new Configuration({
-      apiKey: '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',
+      apiKey: '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',
     });
     const openai = new OpenAIApi(configuration);
     const response = await openai.createCompletion({
