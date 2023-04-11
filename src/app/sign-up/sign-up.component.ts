@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,12 +14,20 @@ export class SignUpComponent implements OnInit {
   password: string = '';
   passwordRepeat: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(
+    private authService: AuthService,
+    private notifier: NotifierService
+  ) {}
 
   ngOnInit(): void {}
 
   signUp(): any {
+    console.log('coucou');
+    console.log(this.password);
+    console.log(this.passwordRepeat);
     if (this.password !== this.passwordRepeat) {
+      console.log('password');
+      this.notifier.notify('error', 'You have not same password');
       return false;
     }
 
