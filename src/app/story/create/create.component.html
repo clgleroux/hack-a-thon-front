@@ -1,2 +1,29 @@
-<p>create works!</p>
-<div></div>
+<div>
+  <div><input class="input" /></div>
+
+  <div>
+    <select>
+      <option *ngFor="let option of optionGenre" value="option.code">
+        {{ option.name }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <select>
+      <option *ngFor="let option of optionStyle" value="option.code">
+        {{ option.name }}
+      </option>
+    </select>
+  </div>
+
+  <div>
+    <div *ngFor="let character of characters">
+      <input [value]="character.firstName" placeholder="First Name" />
+      <input [value]="character.lastName" placeholder="Last Name" />
+    </div>
+    <button (click)="addCharacter()">Add character</button>
+  </div>
+
+  <div><button (click)="generate()">Generate</button></div>
+</div>
