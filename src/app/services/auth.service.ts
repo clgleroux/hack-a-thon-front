@@ -6,6 +6,6 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   constructor() {}
 
-  signUp(): void {}
-  login(): void {}
+  signUp(form: any): void {}
+  login(form: any): void {}
 }
