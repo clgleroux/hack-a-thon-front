@@ -7,8 +7,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  email!: string;
-  password!: string;
+  email: string = '';
+  password: string = '';
 
   constructor(private authService: AuthService) {}
 
@@ -19,6 +19,6 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
     };
-    this.authService.login();
+    this.authService.login(form);
   }
 }
