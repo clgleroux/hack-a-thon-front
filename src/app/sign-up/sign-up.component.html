@@ -1,27 +1,67 @@
-<div>Sign Up</div>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Site</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../styles.css"></head>
+    </head>
+    <body>
+      <app-root></app-root>
+      <header class="main-header">
+          <div class="container">
+              <a href="../../index.html" title="logo" class="logo">logo</a>
 
-<div>
-  <input [value]="email" placeholder="Email" />
-</div>
+              <nav class="main-nav">
+                  <!-- <a href="#" title="Open menu" class="burger">
+                      <i class="fas fa-bars"></i>
+                  </a> -->
 
-<div>
-  <input [value]="firstName" placeholder="First Name" />
-</div>
+                  <ul class="menu">
+                    <li>
+                      <a href="../story/create/create.component.html" title="sign-up">Create Story</a>
+                  </li>
+                    <li>
+                      <a href="sign-up.component.html" title="sign-up">Sign-up</a>
+                    </li>
+                    <li>
+                      <a href="../login/login.component.html" title="Login">Login</a>
+                    </li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
 
-<div>
-  <input [value]="lastName" placeholder="Last Name" />
-</div>
+      <section class="page">
 
-<div>
-  <input [value]="password" placeholder="Password" />
-</div>
+          <div class="container">
 
-<div>
-  <input [value]="passwordRepeat" placeholder="Repeat Password" />
-</div>
+              <h2 class="subtitle"></h2>
 
-<div>
-  <button (click)="signUp()">Create account</button>
-</div>
+              <div>
+                <form action="/action_page.php">
+                    
+                  <label for="fname">First Name</label>
+                  <input type="text" id="fname" name="firstname" [value]="firstName" placeholder="Your name..">
 
-<notifier-container></notifier-container>
+                  <label for="lname">Last Name</label>
+                  <input type="text" id="lname" name="lastname" [value]="lastName" placeholder="Your last name..">
+              
+                  <label for="email">Email</label>
+                  <input type="text" id="email" name="email" [value]="email" placeholder="Your email..">
+
+                  <label for="password">Password</label>
+                  <input type="text" id="password" name="password" [value]="password" placeholder="Your password..">
+
+                  <label for="passwordRepeat">Password</label>
+                  <input type="text" id="passwordRepeat" name="passwordRepeat" [value]="passwordRepeat" placeholder="Repeat password..">
+
+                  <input type="submit" value="Submit" (click)="signUp()">
+
+                </form>
+              </div>
+
+          </div>
+      </section>
+
+    </body>
+</html>

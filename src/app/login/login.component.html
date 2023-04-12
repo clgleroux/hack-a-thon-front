@@ -1,15 +1,60 @@
-<div>Login</div>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Site</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../../styles.css"></head>
+    </head>
+    <body>
+      <app-root></app-root>
+      <header class="main-header">
+          <div class="container">
+              <a href="../../index.html" title="logo" class="logo">logo</a>
 
-<div>
-  <input [value]="email" />
-</div>
+              <nav class="main-nav">
+                  <!-- <a href="#" title="Open menu" class="burger">
+                      <i class="fas fa-bars"></i>
+                  </a> -->
 
-<div>
-  <input [value]="password" />
-</div>
+                  <ul class="menu">
+                    <li>
+                        <a href="../story/create/create.component.html" title="sign-up">Create Story</a>
+                    </li>
+                      <li>
+                          <a href="../sign-up/sign-up.component.html" title="sign-up">Sign-up</a>
+                      </li>
+                      <li>
+                        <a href="login.component.html" title="Login">Login</a>
+                    </li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
 
-<div>You don’t have an account yet?<a routerLink="/sign-up">Sign up ?</a></div>
+      <section class="page">
 
-<div>
-  <button (click)="login()">Login</button>
-</div>
+          <div class="container">
+
+              <h2 class="subtitle"></h2>
+
+              <div>
+                <form action="/action_page.php">
+              
+                  <label for="email">Email</label>
+                  <input type="text" id="email" name="email" [value]="email" placeholder="Your email..">
+
+                  <label for="password">Password</label>
+                  <input type="text" id="password" name="password" [value]="password" placeholder="Your password..">
+
+                  <p>You don’t have an account yet?<a href="../sign-up/sign-up.component.html">Sign up ?</a></p>
+
+                  <input type="submit" value="Submit" (click)="login()">
+
+                </form>
+              </div>
+
+          </div>
+      </section>
+
+    </body>
+</html>

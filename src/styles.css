@@ -1,0 +1,208 @@
+*{box-sizing: border-box;}
+
+body {
+    font-family: "Roboto", sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #333;
+    background-color: #fff;
+    padding-top: 80px;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  input[type=button] {
+    width: 30%;
+    background-color: #2d6863;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=button]:hover {
+    background-color: #275b56;
+  }
+  
+  /* div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  } */
+
+.container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.subtitle {
+    color: #2f2f2f;
+    font-weight: 600;
+    font-size: 35px;
+    font-family: "Rajdhani", sans-serif;
+    margin-bottom: 10px;
+}
+
+.subtitle-p {
+    color: #5e737d;
+    width: 490px;
+    margin-bottom: 30px;
+}
+
+/*------------------------------------*\
+HEADER
+\*------------------------------------*/
+
+.main-header {
+    background:#2d6863;
+    padding: 10px 0;
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 500;
+}
+
+.main-header .container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-header .container .logo{
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+}
+
+.main-header .main-nav .burger{
+    display: none;
+}
+
+.main-header .main-nav .menu {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.main-header .main-nav .menu a {
+    display: block;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 0 20px 0 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #fff;
+    transition: all ease 700ms;
+}
+
+.main-header .main-nav .menu a:hover {
+    color: #333;
+}
+
+.main-header .main-nav .menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.main-header .main-nav .menu {
+    text-align: center;
+}
+.main-header .main-nav .menu li {
+    display: inline-block;
+}
+.main-header .main-nav .menu ul li {
+    display: inherit;
+}
+.main-header .main-nav .menu ul {
+    position: absolute;
+    left: -999em;
+    text-align: left;
+    z-index: 1000;
+}
+.main-header .main-nav .menu li:hover ul {
+    left: auto;
+    background: #000;
+}
+
+
+.page {
+    padding: 80px 0;
+}
+/* .page .grid {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
+} */
+
+.page .grid .subtitle h2{
+  text-decoration: underline;
+  color: #222;
+}
+
+.page .grid figure {
+    width: 24%;
+    margin-bottom: 30px;
+    height: 359px;
+    position: relative;
+    overflow: hidden;
+}
+
+.page .grid figure img {
+    display: block;
+    width: 100%;
+}
+.page .grid figure figcaption {
+    color: #fff;
+    font-size: 18px;
+    text-transform: uppercase;
+    padding: 180px 0 0 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: all ease 700ms;
+}
+
+.film .grid figure figcaption a{
+  text-decoration: none;
+  color: #fff;
+
+}
+
+.film .grid figure:hover figcaption {
+    opacity: 1;
+}
