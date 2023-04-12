@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../services/auth.service';
 import { NotifierService } from 'angular-notifier';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,7 +15,7 @@ export class SignUpComponent implements OnInit {
   passwordRepeat: string = '';
 
   constructor(
-    private authService: AuthService,
+    private userService: UserService,
     private notifier: NotifierService
   ) {}
 
@@ -37,6 +37,6 @@ export class SignUpComponent implements OnInit {
       email: this.email,
       password: this.password,
     };
-    this.authService.signUp(form);
+    this.userService.create(form);
   }
 }
