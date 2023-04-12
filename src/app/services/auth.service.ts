@@ -11,7 +11,7 @@ export class AuthService {
     this.backendUrl = environment.backendUrl;
   }
 
-  login(form: any): void {
-    this.http.post<any>(`${this.backendUrl}/auth`, form);
+  login(form: any): any {
+    return this.http.post<any>(`${this.backendUrl}/auth`, form);
   }
 }

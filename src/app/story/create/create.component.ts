@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Characte } from './character.dto';
 import { OpenAiService } from 'src/app/services/openai.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -36,7 +37,7 @@ export class CreateComponent implements OnInit {
   ];
 
   characters: Array<Characte> = [];
-  constructor(private openAiService: OpenAiService) {}
+  constructor(private openAiService: OpenAiService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -52,6 +53,13 @@ export class CreateComponent implements OnInit {
       optionStyle: this.selectedOptionGenre,
       characters: this.characters,
     };
-    this.openAiService.createStory(form);
+    this.openAiService.createStory(form).then((story: any) => {
+      console.log(story.data.choices[0].text);
+      console.log(story.data.choices[0].text.substring(2));
+      let newStory = JSON.parse(story.data.choices[0].text.substring(2).trim());
+      console.log(newStory.title);
+      console.log(newStory.story);
+      // this.router.navigate(['/story/view', { name, text, imgSrc }]);
+    });
   }
 }

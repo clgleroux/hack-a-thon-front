@@ -1,1 +1,5 @@
-<p>view works!</p>
+<div>
+  <h1>{{ story.name }}</h1>
+  <img src="{{ story.imgSrc }}" />
+  <div [innerHTML]="story.text"></div>
+</div>
