@@ -9,6 +9,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { RouterModule } from '@angular/router';
 import { NotifierModule } from 'angular-notifier';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, TestComponent, LoginComponent, SignUpComponent],
@@ -18,6 +19,7 @@ import { FormsModule } from '@angular/forms';
     RouterModule,
     NotifierModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
