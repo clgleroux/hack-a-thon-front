@@ -14,6 +14,7 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
+  { path: '', redirectTo: '/story', pathMatch: 'full' },
 ];
 
 @NgModule({
