@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   openaiKey: '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',
+  backendUrl: 'http://localhost:3000',
 };
 
 /*

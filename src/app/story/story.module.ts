@@ -5,9 +5,10 @@ import { StoryRoutingModule } from './story-routing.module';
 import { StoryComponent } from './story.component';
 import { ListComponent } from './list/list.component';
 import { ViewComponent } from './view/view.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [StoryComponent, CreateComponent, ListComponent, ViewComponent],
-  imports: [CommonModule, StoryRoutingModule],
+  imports: [CommonModule, StoryRoutingModule, FormsModule],
 })
 export class StoryModule {}

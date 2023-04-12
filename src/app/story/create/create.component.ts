@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Characte } from './character.dto';
+import { OpenAiService } from 'src/app/services/openai.service';
 
 @Component({
   selector: 'app-create',
@@ -7,6 +8,8 @@ import { Characte } from './character.dto';
   styleUrls: ['./create.component.scss'],
 })
 export class CreateComponent implements OnInit {
+  name!: string;
+  selectedOptionGenre: any;
   optionGenre: Array<any> = [
     {
       name: 'Fantasy',
@@ -19,6 +22,7 @@ export class CreateComponent implements OnInit {
     { name: 'Crime', code: 'F' },
   ];
 
+  selectedOptionStyle: any;
   optionStyle: Array<any> = [
     {
       name: 'BD',
@@ -32,16 +36,22 @@ export class CreateComponent implements OnInit {
   ];
 
   characters: Array<Characte> = [];
-  constructor() {}
+  constructor(private openAiService: OpenAiService) {}
 
-  ngOnInit(): void {
-    console.log('coucou');
-  }
+  ngOnInit(): void {}
 
   addCharacter(): void {
     this.characters.push({ lastName: '', firstName: '' });
     console.log(this.characters);
   }
 
-  generate(): void {}
+  generate(): void {
+    const form = {
+      name: this.name,
+      optionGenre: this.selectedOptionGenre,
+      optionStyle: this.selectedOptionGenre,
+      characters: this.characters,
+    };
+    this.openAiService.createStory(form);
+  }
 }

@@ -5,23 +5,17 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
-export class StoryService {
+export class UserService {
   backendUrl: string;
   constructor(private http: HttpClient) {
     this.backendUrl = environment.backendUrl;
   }
 
-  getAll(): any {
-    this.http.get<any>(`${this.backendUrl}/stories`);
-  }
   findOne(): any {
-    this.http.get<any>(`${this.backendUrl}/story`);
+    this.http.get<any>(`${this.backendUrl}/user`);
   }
 
-  create(story: any): any {
-    this.http.post<any>(`${this.backendUrl}/story`, story);
-  }
-  update(story: any): any {
-    this.http.put<any>(`${this.backendUrl}/story`, story);
+  create(user: any): any {
+    this.http.post<any>(`${this.backendUrl}/user`, user);
   }
 }

@@ -1,8 +1,10 @@
 <div>
-  <div><input class="input" /></div>
+  <div>
+    <input class="input" [(ngModel)]="name" placeholder="Name of Story" />
+  </div>
 
   <div>
-    <select>
+    <select [(ngModel)]="selectedOptionGenre">
       <option *ngFor="let option of optionGenre" value="option.code">
         {{ option.name }}
       </option>
@@ -10,7 +12,7 @@
   </div>
 
   <div>
-    <select>
+    <select [(ngModel)]="selectedOptionStyle">
       <option *ngFor="let option of optionStyle" value="option.code">
         {{ option.name }}
       </option>
