@@ -12,16 +12,16 @@ export class StoryService {
   }
 
   getAll(): any {
-    this.http.get<any>(`${this.backendUrl}/stories`);
+    return this.http.get<any>(`${this.backendUrl}/stories`);
   }
-  findOne(): any {
-    this.http.get<any>(`${this.backendUrl}/story`);
+  findOne(id: any): any {
+    return this.http.get<any>(`${this.backendUrl}/story/${id}`);
   }
 
   create(story: any): any {
-    this.http.post<any>(`${this.backendUrl}/story`, story);
+    return this.http.post<any>(`${this.backendUrl}/story`, story);
   }
   update(story: any): any {
-    this.http.put<any>(`${this.backendUrl}/story`, story);
+    return this.http.put<any>(`${this.backendUrl}/story`, story);
   }
 }

@@ -9,7 +9,7 @@ import { StoryService } from './story.service';
 export class OpenAiService {
   constructor(private storyService: StoryService) {}
 
-  createStory(form: any): void {}
-  continueStory(form: any): void {}
-  createImg(form: any): void {}
+  createStory(form: any): any {}
+  continueStory(form: any): any {}
+  createImg(form: any): any {}
 }
