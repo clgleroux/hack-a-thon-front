@@ -8,13 +8,23 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
   backendUrl: string;
 
-  currentUser: any | undefined;
+  currentUser: any | undefined = undefined;
   constructor(private http: HttpClient) {
     this.backendUrl = environment.backendUrl;
   }
 
   login(form: any): any {
-    return this.http.post<any>(`${this.backendUrl}/auth`, form);
+    return new Promise(resolve => {
+      this.http.post<any>(`${this.backendUrl}/auth`, form).subscribe({
+        next: user => {
+          this.currentUser = user;
+          resolve(true);
+        },
+        error: error => {
+          resolve(false);
+        },
+      });
+    });
   }
 
   isLoggedIn(): boolean {
