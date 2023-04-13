@@ -1,12 +1,13 @@
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>Site</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css"></head>
-    </head>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>HackthonFront</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
     <body>
-      <app-root></app-root>
       <header class="main-header">
           <div class="container">
               <a href="index.html" title="logo" class="logo">logo</a>
@@ -18,24 +19,23 @@
 
                   <ul class="menu">
                     <li>
-                        <a href="app/story/create/create.component.html" title="sign-up">Create Story</a>
+                        <a routerLink="/create" title="create">Create Story</a>
                     </li>
                     <li>
-                        <a href="app/sign-up/sign-up.component.html" title="sign-up">Sign-up</a>
+                        <a routerLink="/sign-up" title="sign-up" >Sign-up</a>
                     </li>
                       <li>
-                          <a href="app/login/login.component.html" title="Login">Login</a>
+                          <a routerLink="/login" title="Login" >Login</a>
                       </li>
                   </ul>
               </nav>
           </div>
       </header>
-
       <section class="page">
           <div class="container">
               <h2 class="subtitle"></h2>
-              <!-- <p class="subtitle-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae beatae reprehenderit aperiam id consequatur pariatur similique libero eos dolor dolorum ullam officia, eligendi reiciendis laboriosam, praesentium ad odit doloribus minus.</p> -->
               <div class="grid">
+                <app-root></app-root>
               </div>
           </div>
       </section>
