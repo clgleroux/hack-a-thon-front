@@ -1,1 +1,7 @@
-<p>list works!</p>
+<div *ngFor="let story of stories">
+  <div>#{{ story.id }}: {{ story.name }}</div>
+  <div>{{ story.describe }}</div>
+  <a routerLink="view?id={{ story.id }}">View</a>
+</div>
+
+<a routerLink="create">Add story</a>

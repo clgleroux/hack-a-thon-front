@@ -7,7 +7,7 @@ import { StoryService } from 'src/app/services/story.service';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  stories: any;
+  stories!: [{ id: string; name: string; describe: string }];
 
   constructor(private storyService: StoryService) {}
 

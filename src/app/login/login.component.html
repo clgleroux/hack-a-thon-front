@@ -6,10 +6,10 @@
 
         <div>        
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" [value]="email" placeholder="Your email..">
+            <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="Your email..">
 
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" [value]="password" placeholder="Your password..">
+            <input type="text" id="password" name="password" [(ngModel)]="password" placeholder="Your password..">
 
             <p>You don’t have an account yet?<a routerLink="/sign-up">Sign up ?</a></p>
 

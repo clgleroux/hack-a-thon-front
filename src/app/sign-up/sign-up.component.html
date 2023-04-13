@@ -6,19 +6,19 @@
 
         <div>              
             <label for="fname">First Name</label>
-            <input type="text" id="fname" name="firstname" [value]="firstName" placeholder="Your name..">
+            <input type="text" id="fname" name="firstname" [(ngModel)]="firstName" placeholder="Your name..">
 
             <label for="lname">Last Name</label>
-            <input type="text" id="lname" name="lastname" [value]="lastName" placeholder="Your last name..">
+            <input type="text" id="lname" name="lastname" [(ngModel)]="lastName" placeholder="Your last name..">
         
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" [value]="email" placeholder="Your email..">
+            <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="Your email..">
 
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" [value]="password" placeholder="Your password..">
+            <input type="text" id="password" name="password" [(ngModel)]="password" placeholder="Your password..">
 
             <label for="passwordRepeat">Password</label>
-            <input type="text" id="passwordRepeat" name="passwordRepeat" [value]="passwordRepeat" placeholder="Repeat password..">
+            <input type="text" id="passwordRepeat" name="passwordRepeat" [(ngModel)]="passwordRepeat" placeholder="Repeat password..">
 
             <input type="button" value="Sign-up" (click)="signUp()">
 

@@ -11,11 +11,11 @@ export class UserService {
     this.backendUrl = environment.backendUrl;
   }
 
-  findOne(): any {
-    this.http.get<any>(`${this.backendUrl}/user`);
+  findOne(id: any): any {
+    return this.http.get<any>(`${this.backendUrl}/user/${id}`);
   }
 
   create(user: any): any {
-    this.http.post<any>(`${this.backendUrl}/user`, user);
+    return this.http.post<any>(`${this.backendUrl}/user`, user);
   }
 }
