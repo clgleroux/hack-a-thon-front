@@ -1,40 +1,66 @@
 <section class="page">
+  <div class="container">
+    <h2 class="subtitle">Create</h2>
 
-    <div class="container">
+    <div>
+      <label for="nameS">Name of Story</label>
+      <input
+        type="text"
+        id="nameS"
+        name="nameS"
+        [(ngModel)]="name"
+        placeholder="Name of Story" />
 
-        <h2 class="subtitle">Create</h2>
+      <label for="selectedOptionGenre">Selected Genre</label>
+      <select
+        id="selectedOptionGenre"
+        name="selectedOptionGenre"
+        [(ngModel)]="selectedOptionGenre">
+        <option *ngFor="let option of optionGenre" value="option.code">
+          {{ option.name }}
+        </option>
+      </select>
 
-        <div>        
-            <label for="nameS">Name of Story</label>
-            <input type="text" id="nameS" name="nameS"  [(ngModel)]="name" placeholder="Name of Story">
+      <label for="selectedOptionStyle">Selected Style</label>
+      <select
+        id="selectedOptionStyle"
+        name="selectedOptionStyle"
+        [(ngModel)]="selectedOptionStyle">
+        <option *ngFor="let option of optionStyle" value="option.code">
+          {{ option.name }}
+        </option>
+      </select>
 
-            <label for="selectedOptionGenre">Selected Genre</label>
-            <select id="selectedOptionGenre" name="selectedOptionGenre" [(ngModel)]="selectedOptionGenre">
-            <option *ngFor="let option of optionGenre" value="option.code">
-              {{ option.name }}
-            </option>
-            </select>
+      <div *ngFor="let character of characters">
+        <label for="fname">First Name</label>
+        <input
+          type="text"
+          id="fname"
+          name="firstname"
+          [(ngModel)]="character.firstName"
+          placeholder="First Name" />
 
-            <label for="selectedOptionStyle">Selected Style</label>
-            <select id="selectedOptionStyle" name="selectedOptionStyle" [(ngModel)]="selectedOptionStyle">
-            <option *ngFor="let option of optionStyle" value="option.code">
-              {{ option.name }}
-            </option>
-            </select>
+        <label for="lname">Last Name</label>
+        <input
+          type="text"
+          id="lname"
+          name="lastname"
+          [(ngModel)]="character.lastName"
+          placeholder="Last Name" />
+      </div>
 
-            <div *ngFor="let character of characters">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" name="firstname" [(ngModel)]="character.firstName" placeholder="First Name">
+      <input type="button" value="Add character" (click)="addCharacter()" />
 
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" name="lastname" [(ngModel)]="character.lastName" placeholder="Last Name">
-            </div>
-
-            <input type="button" value="Add character" (click)="addCharacter()">
-
-            <input type="button" value="Generate" (click)="generate()">
-            
-        </div>
-
+      <input type="button" value="Generate" (click)="generate()" />
     </div>
+  </div>
+
+  <div *ngIf="displayLoader" class="div-loader">
+    <div class="lds-ellipsis">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
 </section>
