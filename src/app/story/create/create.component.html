@@ -22,8 +22,8 @@
   <div>
     <div *ngFor="let character of characters; index as i">
       <span>Character {{ i + 1 }} : </span>
-      <input [value]="character.firstName" placeholder="First Name" />
-      <input [value]="character.lastName" placeholder="Last Name" />
+      <input [(ngModel)]="character.firstName" placeholder="First Name" />
+      <input [(ngModel)]="character.lastName" placeholder="Last Name" />
     </div>
     <button (click)="addCharacter()">Add character</button>
   </div>

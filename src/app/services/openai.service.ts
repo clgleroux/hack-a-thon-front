@@ -27,6 +27,20 @@ export class OpenAiService {
       max_tokens: 2048,
     });
   }
-  continueStory(form: any): any {}
+  continueStory(sentence: string): any {
+    const configuration = new Configuration({
+      apiKey: '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',
+    });
+    const openai = new OpenAIApi(configuration);
+
+    sentence = `${sentence} Continue l'histoire s'il te plaît. Retourne le tout sous format \`json\` avec en nom de paramètre story que je puisse directement utiliser \`JSON.parse\`. Merci`;
+
+    return openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: sentence,
+      temperature: 0.9,
+      max_tokens: 2048,
+    });
+  }
   createImg(form: any): any {}
 }
