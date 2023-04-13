@@ -27,6 +27,22 @@ export class OpenAiService {
       max_tokens: 2048,
     });
   }
+
+  async createImg(form: any): Promise<any> {
+
+    const configuration = new Configuration({
+      apiKey: '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',
+    });
+    const openai = new OpenAIApi(configuration)
+    let imgDesescription: string = 'Donne moi une image avec des elephants rose en mode heroic fantasy avec le nom "Mongole le mongolito" inscrit sur un des ses habit';
+
+    return openai.Image.create_edit({
+      prompt : imgDesescription,
+      n:1,
+      size:"400x200"
+    });
+  }
+
   continueStory(sentence: string): any {
     const configuration = new Configuration({
       apiKey: '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',
@@ -42,5 +58,4 @@ export class OpenAiService {
       max_tokens: 2048,
     });
   }
-  createImg(form: any): any {}
 }
