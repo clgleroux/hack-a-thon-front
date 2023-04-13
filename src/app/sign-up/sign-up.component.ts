@@ -37,6 +37,8 @@ export class SignUpComponent implements OnInit {
       email: this.email,
       password: this.password,
     };
-    this.userService.create(form);
+    this.userService.create(form).subscribe((res: any) => {
+      this.notifier.notify('success', 'Create Account');
+    });
   }
 }
