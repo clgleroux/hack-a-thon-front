@@ -39,6 +39,8 @@ export class CreateComponent implements OnInit {
     { name: 'Tatto', code: 'T' },
   ];
 
+  displayLoader: boolean = false;
+
   characters: Array<Characte> = [];
   constructor(
     private openAiService: OpenAiService,
@@ -55,6 +57,7 @@ export class CreateComponent implements OnInit {
   }
 
   generate(): void {
+    this.displayLoader = true;
     const form = {
       name: this.name,
       optionGenre: this.selectedOptionGenre,
@@ -77,6 +80,7 @@ export class CreateComponent implements OnInit {
         this.storyService
           .create(this.authService.currentUser.id, createBook)
           .subscribe((book: any) => {
+            this.displayLoader = false;
             // this.router.navigate([`/story/view?id=${book.id}`]);
           });
       });
