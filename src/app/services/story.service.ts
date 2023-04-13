@@ -13,18 +13,24 @@ export class StoryService {
     this.backendUrl = environment.backendUrl;
   }
 
-  getAll(): any {
-    return this.http.get<any>(`${this.backendUrl}/stories`);
+  getAll(userId: any): any {
+    return this.http.get<any>(`${this.backendUrl}/api/books/user/${userId}`);
   }
 
   findOne(id: any): Observable<Book> {
-    return this.http.get<any>(`${this.backendUrl}/story/${id}`);
+    return this.http.get<any>(`${this.backendUrl}/api/books/${id}`);
   }
 
-  create(story: CreateBook): any {
-    return this.http.post<any>(`${this.backendUrl}/story`, story);
+  create(userId: any, story: CreateBook): any {
+    return this.http.post<any>(
+      `${this.backendUrl}/api/books/user/${userId}`,
+      story
+    );
   }
-  update(story: UpdateBook): any {
-    return this.http.put<any>(`${this.backendUrl}/story`, story);
+  update(idBook: any, story: UpdateBook): any {
+    return this.http.post<any>(
+      `${this.backendUrl}/api/books/chapters/${idBook}`,
+      story
+    );
   }
 }
