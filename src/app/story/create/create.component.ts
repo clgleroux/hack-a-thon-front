@@ -71,13 +71,14 @@ export class CreateComponent implements OnInit {
       this.openAiService.createImg(formImg).then((img: any) => {
         const createBook: CreateBook = {
           name: newStory.title,
-          story: newStory.story,
+          chapter: newStory.story,
           img: img,
-          idUser: this.authService.currentUser.id,
         };
-        this.storyService.create(createBook).subscribe((book: any) => {
-          // this.router.navigate([`/story/view?id=${book.id}`]);
-        });
+        this.storyService
+          .create(this.authService.currentUser.id, createBook)
+          .subscribe((book: any) => {
+            // this.router.navigate([`/story/view?id=${book.id}`]);
+          });
       });
     });
   }

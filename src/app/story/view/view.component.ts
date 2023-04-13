@@ -49,15 +49,16 @@ export class ViewComponent implements OnInit {
 
         this.openAiService.createImg(formImg).then((img: string) => {
           const updateBook: UpdateBook = {
-            story: nextChapter.story,
+            chapter: nextChapter.story,
             img: img,
             position: this.book.chapters.length,
-            idUser: this.authService.currentUser.id,
           };
 
-          this.storyService.update(updateBook).subscribe((data: any) => {
-            console.log(data);
-          });
+          this.storyService
+            .update(this.book.id, updateBook)
+            .subscribe((data: any) => {
+              console.log(data);
+            });
         });
       });
     }
