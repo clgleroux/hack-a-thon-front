@@ -1,13 +1,44 @@
-<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <title>HackthonFront</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
-  <app-root></app-root>
-</body>
+    <body>
+      <header class="main-header">
+          <div class="container">
+              <a href="index.html" title="logo" class="logo">logo</a>
+
+              <nav class="main-nav">
+                  <!-- <a href="#" title="Open menu" class="burger">
+                      <i class="fas fa-bars"></i>
+                  </a> -->
+
+                  <ul class="menu">
+                    <li>
+                        <a routerLink="/create" title="create">Create Story</a>
+                    </li>
+                    <li>
+                        <a routerLink="/sign-up" title="sign-up" >Sign-up</a>
+                    </li>
+                      <li>
+                          <a routerLink="/login" title="Login" >Login</a>
+                      </li>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+      <section class="page">
+          <div class="container">
+              <h2 class="subtitle"></h2>
+              <div class="grid">
+                <app-root></app-root>
+              </div>
+          </div>
+      </section>
+
+    </body>
 </html>
