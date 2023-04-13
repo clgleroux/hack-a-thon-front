@@ -12,10 +12,10 @@ export class UserService {
   }
 
   findOne(id: any): any {
-    return this.http.get<any>(`${this.backendUrl}/user/${id}`);
+    return this.http.get<any>(`${this.backendUrl}/api/users/${id}`);
   }
 
   create(user: any): any {
-    return this.http.post<any>(`${this.backendUrl}/user`, user);
+    return this.http.post<any>(`${this.backendUrl}/api/users`, user);
   }
 }

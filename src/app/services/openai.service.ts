@@ -9,16 +9,37 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class OpenAiService {
-  constructor(private storyService: StoryService) {}
+  configuration: any;
+  constructor(private storyService: StoryService) {
+    this.configuration = new Configuration({
+      apiKey: environment.openaiKey,
+    });
+  }
 
   async createStory(form: any): Promise<any> {
-    const configuration = new Configuration({
-      apiKey: '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',
-    });
-    const openai = new OpenAIApi(configuration);
+    const openai = new OpenAIApi(this.configuration);
 
-    let sentence: string =
-      'Est ce que je peux avoir une histoire sur les elephants rose en mode heroic fantasy avec comme personnage "Mongole le mongolito", s\'il te plaît ? Donne moi aussi un titre de l\'histoire. Retourne le tout sous format `json` avec en nom de paramètre story et title que je puisse directement utiliser `JSON.parse`. Merci';
+    let sentence: string = 'Créer moi une histoire.';
+
+    if (form.name !== undefined) {
+      sentence += `Le titre de l'histoire est : ${form.name}.`;
+    } else {
+      sentence += "Trouve moi le titre de l'histoire.";
+    }
+
+    if (form.optionGenre !== undefined) {
+      sentence += `Le genre de l'histoire est : ${form.optionGenre}.`;
+    }
+    await form.characters.forEach(
+      (character: { firstName: string; lastName: string }, index: any) => {
+        if (character.firstName) {
+          sentence += `Le personnage ${index} est '${character.firstName} ${character.lastName}'.`;
+        }
+      }
+    );
+
+    sentence +=
+      'Retourne le tout sous format `json` avec en nom de paramètre story et title que je puisse directement utiliser `JSON.parse`. Merci';
 
     return openai.createCompletion({
       model: 'text-davinci-003',
@@ -27,11 +48,26 @@ export class OpenAiService {
       max_tokens: 2048,
     });
   }
-  continueStory(sentence: string): any {
-    const configuration = new Configuration({
-      apiKey: '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',
+
+  async createImg(form: any): Promise<any> {
+    const openai = new OpenAIApi(this.configuration);
+
+    let sentence: string = `Donne moi une image avec cette histoire : '${form.sentence}'.`;
+    if (form.optionStyle !== undefined) {
+      sentence += `Le style de l'image doit être : form.optionStyle`;
+    }
+
+    let img = await openai.createImage({
+      prompt: sentence,
+      n: 1,
+      size: '256x256',
     });
-    const openai = new OpenAIApi(configuration);
+
+    return img.data.data[0].url;
+  }
+
+  continueStory(sentence: string): any {
+    const openai = new OpenAIApi(this.configuration);
 
     sentence = `${sentence} Continue l'histoire s'il te plaît. Retourne le tout sous format \`json\` avec en nom de paramètre story que je puisse directement utiliser \`JSON.parse\`. Merci`;
 
@@ -42,5 +78,4 @@ export class OpenAiService {
       max_tokens: 2048,
     });
   }
-  createImg(form: any): any {}
 }

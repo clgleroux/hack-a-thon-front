@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  openaiKey: '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',
+  openaiKey: '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',
   backendUrl: 'http://localhost:3000',
 };
 

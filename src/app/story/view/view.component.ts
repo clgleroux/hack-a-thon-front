@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from 'src/app/interface/book.dto';
+import { Book, UpdateBook } from 'src/app/interface/book.dto';
 import { StoryService } from 'src/app/services/story.service';
 
 import { PdfMakeWrapper, Item, Txt, Img } from 'pdfmake-wrapper';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { OpenAiService } from 'src/app/services/openai.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-view',
@@ -18,7 +19,8 @@ export class ViewComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private storyService: StoryService,
-    private openAiService: OpenAiService
+    private openAiService: OpenAiService,
+    private authService: AuthService
   ) {
     this.activatedRoute.queryParams.subscribe((params: any) => {
       console.log(params);
@@ -36,20 +38,46 @@ export class ViewComponent implements OnInit {
       const sentence: string =
         this.book.chapters[this.book.chapters.length - 1].text;
       this.openAiService.continueStory(sentence).subscribe((chapter: any) => {
-        console.log(chapter.story);
+        let nextChapter = JSON.parse(
+          chapter.data.choices[0].text.substring(2).trim()
+        );
+
+        const formImg = {
+          sentence: nextChapter.story,
+          optionStyle: undefined,
+        };
+
+        this.openAiService.createImg(formImg).then((img: string) => {
+          const updateBook: UpdateBook = {
+            chapter: nextChapter.story,
+            img: img,
+            position: this.book.chapters.length,
+          };
+
+          this.storyService
+            .update(this.book.id, updateBook)
+            .subscribe((data: any) => {
+              console.log(data);
+            });
+        });
       });
     }
   }
 
   async generatePDF(): Promise<void> {
-    // Set the fonts to use
     PdfMakeWrapper.setFonts(pdfFonts);
 
     const pdf = new PdfMakeWrapper();
 
-    pdf.add(new Txt('Item 1').end);
-    pdf.add(await new Img('https://placehold.co/400x200').build());
-
-    pdf.create().download();
+    pdf.add(new Txt(this.book.name).bold().fontSize(22).end);
+    Promise.all([
+      this.book.chapters.forEach(async chapter => {
+        pdf.add(await new Img(chapter.img).build());
+        pdf.add(new Txt(chapter.text).bold().fontSize(22).end);
+        return true;
+      }),
+    ]).then(data => {
+      pdf.create().download();
+    });
   }
 }
