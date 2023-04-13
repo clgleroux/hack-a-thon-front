@@ -35,6 +35,7 @@ input[type=text], select {
   }
 
   input[type=button] {
+    display: block;
     width: 30%;
     background-color: #2d6863;
     color: white;
@@ -130,7 +131,7 @@ HEADER
 }
 
 .main-header .main-nav .menu a:hover {
-    color: #333;
+    text-decoration: underline;
 }
 
 .main-header .main-nav .menu ul {
@@ -157,17 +158,6 @@ HEADER
     left: auto;
     background: #000;
 }
-
-
-.page {
-    padding: 80px 0;
-}
-/* .page .grid {
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    justify-content: space-between;
-} */
 
 .page .grid .subtitle h2{
   text-decoration: underline;
@@ -201,12 +191,12 @@ HEADER
     transition: all ease 700ms;
 }
 
-.film .grid figure figcaption a{
+.page .grid figure figcaption a{
   text-decoration: none;
   color: #fff;
 
 }
 
-.film .grid figure:hover figcaption {
+.page .grid figure:hover figcaption {
     opacity: 1;
 }
