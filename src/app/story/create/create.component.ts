@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Characte } from './character.dto';
+import { Characte } from '../../interface/character.dto';
 import { OpenAiService } from 'src/app/services/openai.service';
 import { Router } from '@angular/router';
 
@@ -57,6 +57,13 @@ export class CreateComponent implements OnInit {
       console.log(story.data.choices[0].text);
       console.log(story.data.choices[0].text.substring(2));
       let newStory = JSON.parse(story.data.choices[0].text.substring(2).trim());
+      this.openAiService.createImg(newStory.story).subscribe((img: any) => {
+        let createBook = {
+          name: newStory.title,
+          story: newStory.story,
+          img: img,
+        };
+      });
       console.log(newStory.title);
       console.log(newStory.story);
       // this.router.navigate(['/story/view', { name, text, imgSrc }]);

@@ -1,5 +1,10 @@
 <div>
-  <h1>{{ story.name }}</h1>
-  <img src="{{ story.imgSrc }}" />
-  <div [innerHTML]="story.text"></div>
+  <h1>{{ book.name }}</h1>
+  <div *ngFor="let chapter of book.chapters">
+    <img src="{{ chapter.img }}" />
+    <div [innerHTML]="chapter.text"></div>
+  </div>
+
+  <button (click)="nextChapter()">Next</button>
+  <button (click)="generatePDF()">PDF</button>
 </div>

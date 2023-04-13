@@ -28,8 +28,6 @@ export class OpenAiService {
     });
   }
 
-  continueStory(form: any): any {}
-
   async createImg(form: any): Promise<any> {
 
     const configuration = new Configuration({
@@ -42,6 +40,22 @@ export class OpenAiService {
       prompt : imgDesescription,
       n:1,
       size:"400x200"
+    });
+  }
+
+  continueStory(sentence: string): any {
+    const configuration = new Configuration({
+      apiKey: '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',
+    });
+    const openai = new OpenAIApi(configuration);
+
+    sentence = `${sentence} Continue l'histoire s'il te plaît. Retourne le tout sous format \`json\` avec en nom de paramètre story que je puisse directement utiliser \`JSON.parse\`. Merci`;
+
+    return openai.createCompletion({
+      model: 'text-davinci-003',
+      prompt: sentence,
+      temperature: 0.9,
+      max_tokens: 2048,
     });
   }
 }

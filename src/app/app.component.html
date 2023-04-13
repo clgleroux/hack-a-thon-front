@@ -1,1 +1,26 @@
-<router-outlet></router-outlet>
+<header class="main-header">
+  <div class="container">
+    <a routerLink="/" title="logo" class="logo">logo</a>
+    <nav class="main-nav">
+      <ul class="menu">
+        <li>
+          <a routerLink="/story/create" title="create">Create Story</a>
+        </li>
+        <li>
+          <a routerLink="/sign-up" title="sign-up">Sign-up</a>
+        </li>
+        <li>
+          <a routerLink="/login" title="Login">Login</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<section class="page">
+  <div class="container">
+    <h2 class="subtitle"></h2>
+    <div class="grid">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

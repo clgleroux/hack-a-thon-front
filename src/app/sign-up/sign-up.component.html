@@ -1,27 +1,28 @@
-<div>Sign Up</div>
+<section class="page">
 
-<div>
-  <input [value]="email" placeholder="Email" />
-</div>
+    <div class="container">
 
-<div>
-  <input [value]="firstName" placeholder="First Name" />
-</div>
+        <h2 class="subtitle">Sign-up</h2>
 
-<div>
-  <input [value]="lastName" placeholder="Last Name" />
-</div>
+        <div>              
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" [(ngModel)]="firstName" placeholder="Your name..">
 
-<div>
-  <input [value]="password" placeholder="Password" />
-</div>
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" [(ngModel)]="lastName" placeholder="Your last name..">
+        
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="Your email..">
 
-<div>
-  <input [value]="passwordRepeat" placeholder="Repeat Password" />
-</div>
+            <label for="password">Password</label>
+            <input type="text" id="password" name="password" [(ngModel)]="password" placeholder="Your password..">
 
-<div>
-  <button (click)="signUp()">Create account</button>
-</div>
+            <label for="passwordRepeat">Password</label>
+            <input type="text" id="passwordRepeat" name="passwordRepeat" [(ngModel)]="passwordRepeat" placeholder="Repeat password..">
 
-<notifier-container></notifier-container>
+            <input type="button" value="Sign-up" (click)="signUp()">
+
+          </div>
+
+    </div>
+</section>

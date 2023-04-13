@@ -1,32 +1,40 @@
-<div>
-  <div>
-    <input class="input" [(ngModel)]="name" placeholder="Name of Story" />
-  </div>
+<section class="page">
 
-  <div>
-    <select [(ngModel)]="selectedOptionGenre">
-      <option *ngFor="let option of optionGenre" value="option.code">
-        {{ option.name }}
-      </option>
-    </select>
-  </div>
+    <div class="container">
 
-  <div>
-    <select [(ngModel)]="selectedOptionStyle">
-      <option *ngFor="let option of optionStyle" value="option.code">
-        {{ option.name }}
-      </option>
-    </select>
-  </div>
+        <h2 class="subtitle">Create</h2>
 
-  <div>
-    <div *ngFor="let character of characters; index as i">
-      <span>Character {{ i + 1 }} : </span>
-      <input [value]="character.firstName" placeholder="First Name" />
-      <input [value]="character.lastName" placeholder="Last Name" />
+        <div>        
+            <label for="nameS">Name of Story</label>
+            <input type="text" id="nameS" name="nameS"  [(ngModel)]="name" placeholder="Name of Story">
+
+            <label for="selectedOptionGenre">Selected Genre</label>
+            <select id="selectedOptionGenre" name="selectedOptionGenre" [(ngModel)]="selectedOptionGenre">
+            <option *ngFor="let option of optionGenre" value="option.code">
+              {{ option.name }}
+            </option>
+            </select>
+
+            <label for="selectedOptionStyle">Selected Style</label>
+            <select id="selectedOptionStyle" name="selectedOptionStyle" [(ngModel)]="selectedOptionStyle">
+            <option *ngFor="let option of optionStyle" value="option.code">
+              {{ option.name }}
+            </option>
+            </select>
+
+            <div *ngFor="let character of characters">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="firstname" [(ngModel)]="character.firstName" placeholder="First Name">
+
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lastname" [(ngModel)]="character.lastName" placeholder="Last Name">
+            </div>
+
+            <input type="button" value="Add character" (click)="addCharacter()">
+
+            <input type="button" value="Generate" (click)="generate()">
+            
+        </div>
+
     </div>
-    <button (click)="addCharacter()">Add character</button>
-  </div>
-
-  <div><button (click)="generate()">Generate</button></div>
-</div>
+</section>
