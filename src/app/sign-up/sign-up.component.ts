@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotifierService } from 'angular-notifier';
 import { UserService } from '../services/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sign-up',
@@ -16,7 +17,8 @@ export class SignUpComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private notifier: NotifierService
+    private notifier: NotifierService,
+    private router: Router,
   ) {}
 
   ngOnInit(): void {}
@@ -38,6 +40,7 @@ export class SignUpComponent implements OnInit {
       password: this.password,
     };
     this.userService.create(form).subscribe((res: any) => {
+      this.router.navigate([`/login`]);
       this.notifier.notify('success', 'Create Account');
     });
   }

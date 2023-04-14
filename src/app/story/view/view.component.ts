@@ -77,6 +77,7 @@ export class ViewComponent implements OnInit {
     console.log(this.book.chapters)
     Promise.all([
       this.book.chapters.forEach(async (chapter: any) => {
+        // TODO : PAS cool
         // pdf.add(await new Img(chapter.url).build());
         pdf.add(new Txt(chapter.text).fontSize(12).end);
         return true;

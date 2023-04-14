@@ -12,13 +12,13 @@
             <input type="text" id="lname" name="lastname" [(ngModel)]="lastName" placeholder="Your last name..">
         
             <label for="email">Email</label>
-            <input type="text" id="email" name="email" [(ngModel)]="email" placeholder="Your email..">
+            <input type="email" id="email" name="email" [(ngModel)]="email" placeholder="Your email..">
 
             <label for="password">Password</label>
-            <input type="text" id="password" name="password" [(ngModel)]="password" placeholder="Your password..">
+            <input type="password" id="password" name="password" [(ngModel)]="password" placeholder="Your password..">
 
             <label for="passwordRepeat">Password</label>
-            <input type="text" id="passwordRepeat" name="passwordRepeat" [(ngModel)]="passwordRepeat" placeholder="Repeat password..">
+            <input type="password" id="passwordRepeat" name="passwordRepeat" [(ngModel)]="passwordRepeat" placeholder="Repeat password..">
 
             <input type="button" value="Sign-up" (click)="signUp()">
 

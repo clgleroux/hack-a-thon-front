@@ -1,0 +1,16 @@
+.view-more {
+    background-color: #315af0; /* Green */
+    border: none;
+    color: white;
+    padding: 2px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 5px 3px 10px 3px;
+    cursor: pointer;
+    &:hover {
+        background-color: #264acf;
+        transition: .2s;
+    }
+}

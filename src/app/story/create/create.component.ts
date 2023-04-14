@@ -68,7 +68,7 @@ export class CreateComponent implements OnInit {
       console.log(story.data.choices[0].text.substring(2));
       let newStory = JSON.parse(story.data.choices[0].text.substring(2).trim());
       const formImg = {
-        sentence: newStory.story,
+        sentence: newStory.story.substring(0,255),
         optionStyle: this.selectedOptionStyle,
       };
       this.openAiService.createImg(formImg).then((img: any) => {
@@ -80,6 +80,7 @@ export class CreateComponent implements OnInit {
         this.storyService
           .create(this.authService.currentUser.id, createBook)
           .subscribe((book: any) => {
+            console.log(book)
             this.displayLoader = false;
             this.router.navigate([`/story/view/${book.id}`]);
           });

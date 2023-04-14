@@ -52,7 +52,7 @@ export class OpenAiService {
   async createImg(form: any): Promise<any> {
     const openai = new OpenAIApi(this.configuration);
 
-    let sentence: string = `Donne moi une image avec cette histoire : '${form.sentence}'.`;
+    let sentence: string = `Illustre moi cette histoire : '${form.sentence}'.`;
     if (form.optionStyle !== undefined) {
       sentence += `Le style de l'image doit être : form.optionStyle`;
     }

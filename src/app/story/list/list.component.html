@@ -1,7 +1,7 @@
 <div *ngFor="let story of stories">
   <div>#{{ story.id }}: {{ story.name }}</div>
   <div>{{ story.chapters[0].text }}</div>
-  <a (click)="viewStory(story.id)">View</a>
+  <a class="view-more" (click)="viewStory(story.id)">View</a>
 </div>
 
 <h2>If you want to add a new story click</h2>

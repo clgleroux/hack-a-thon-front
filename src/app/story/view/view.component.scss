@@ -1,0 +1,30 @@
+.text-center {
+    text-align: center;
+}
+
+.chapters {
+    padding: 10px 0;
+    .d-flex {
+        display: flex;
+        justify-content: center;
+    }
+}
+.div-btn {
+    margin-top: 10px;
+    .btn {
+        background-color: #315af0; /* Green */
+        border: none;
+        color: white;
+        padding: 4px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 0 5px;
+        cursor: pointer;
+        &:hover {
+            background-color: #264acf;
+            transition: .2s;
+        }
+    }
+}
