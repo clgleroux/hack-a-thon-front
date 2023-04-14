@@ -81,7 +81,7 @@ export class CreateComponent implements OnInit {
           .create(this.authService.currentUser.id, createBook)
           .subscribe((book: any) => {
             this.displayLoader = false;
-            // this.router.navigate([`/story/view?id=${book.id}`]);
+            this.router.navigate([`/story/view/${book.id}`]);
           });
       });
     });

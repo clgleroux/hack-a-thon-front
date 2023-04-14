@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Book, UpdateBook } from 'src/app/interface/book.dto';
 import { StoryService } from 'src/app/services/story.service';
 
-import { PdfMakeWrapper, Item, Txt, Img } from 'pdfmake-wrapper';
+import { PdfMakeWrapper, Item, Txt, Img, IText } from 'pdfmake-wrapper';
 import * as pdfFonts from 'pdfmake/build/vfs_fonts';
 import { OpenAiService } from 'src/app/services/openai.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./view.component.scss'],
 })
 export class ViewComponent implements OnInit {
-  book!: Book;
+  book!: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -22,11 +22,15 @@ export class ViewComponent implements OnInit {
     private openAiService: OpenAiService,
     private authService: AuthService
   ) {
-    this.activatedRoute.queryParams.subscribe((params: any) => {
+    this.activatedRoute.params.subscribe((params: any) => {
       console.log(params);
       const idStory = params['id'];
       this.storyService.findOne(idStory).subscribe((story: Book) => {
         this.book = story;
+
+        let temp = this.book.chapters.map((item: any, i: string | number) => Object.assign({}, item, this.book.images[i]));
+        console.log(temp)
+        this.book.chapters = temp;
       });
     });
   }
@@ -37,13 +41,13 @@ export class ViewComponent implements OnInit {
     if (this.book.chapters !== undefined) {
       const sentence: string =
         this.book.chapters[this.book.chapters.length - 1].text;
-      this.openAiService.continueStory(sentence).subscribe((chapter: any) => {
+      this.openAiService.continueStory(sentence).then((chapter: any) => {
         let nextChapter = JSON.parse(
           chapter.data.choices[0].text.substring(2).trim()
         );
 
         const formImg = {
-          sentence: nextChapter.story,
+          sentence: nextChapter.story.substring(0,255),
           optionStyle: undefined,
         };
 
@@ -57,7 +61,7 @@ export class ViewComponent implements OnInit {
           this.storyService
             .update(this.book.id, updateBook)
             .subscribe((data: any) => {
-              console.log(data);
+              this.book.chapters.push(data.next)
             });
         });
       });
@@ -70,10 +74,11 @@ export class ViewComponent implements OnInit {
     const pdf = new PdfMakeWrapper();
 
     pdf.add(new Txt(this.book.name).bold().fontSize(22).end);
+    console.log(this.book.chapters)
     Promise.all([
-      this.book.chapters.forEach(async chapter => {
-        pdf.add(await new Img(chapter.img).build());
-        pdf.add(new Txt(chapter.text).bold().fontSize(22).end);
+      this.book.chapters.forEach(async (chapter: any) => {
+        // pdf.add(await new Img(chapter.url).build());
+        pdf.add(new Txt(chapter.text).fontSize(12).end);
         return true;
       }),
     ]).then(data => {

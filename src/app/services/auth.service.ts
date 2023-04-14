@@ -15,10 +15,13 @@ export class AuthService {
 
   login(form: any): any {
     return new Promise(resolve => {
-      this.http.post<any>(`${this.backendUrl}/auth`, form).subscribe({
-        next: user => {
-          this.currentUser = user;
-          resolve(true);
+      this.http.post<any>(`${this.backendUrl}/api/auth`, form).subscribe({
+        next: res => {
+          if (res.user !== undefined) {
+            this.currentUser = res.user;
+            resolve(true);
+          }
+          resolve(false)
         },
         error: error => {
           resolve(false);

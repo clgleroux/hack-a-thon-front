@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NotifierService } from 'angular-notifier';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -10,7 +12,7 @@ export class LoginComponent implements OnInit {
   email: string = '';
   password: string = '';
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private notifier: NotifierService, private router: Router,) {}
 
   ngOnInit(): void {}
 
@@ -19,6 +21,12 @@ export class LoginComponent implements OnInit {
       email: this.email,
       password: this.password,
     };
-    this.authService.login(form);
+    this.authService.login(form).then((res: any) => {
+      if (res === true){
+        this.router.navigate([`/story`]);
+      } else {
+        this.notifier.notify('error', 'Error');
+      }
+    });
   }
 }
